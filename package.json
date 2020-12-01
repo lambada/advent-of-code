@@ -4,7 +4,7 @@
   "description": "Just some solutions for advent-of code. This is only really used for standard linting",
   "main": "2019/day-01/part1.js",
   "dependencies": {
-    "standard": "^14.3.4"
+    "standard": "^16.0.3"
   },
   "devDependencies": {},
   "scripts": {
