@@ -1021,8 +1021,8 @@ const processed = inputArray.map(entry => {
 let validCount = 0
 
 processed.forEach(entry => {
-  const position1Match = entry.password.charAt(entry.position1) == entry.neededCharacter
-  const position2Match = entry.password.charAt(entry.position2) == entry.neededCharacter
+  const position1Match = entry.password.charAt(entry.position1) === entry.neededCharacter
+  const position2Match = entry.password.charAt(entry.position2) === entry.neededCharacter
   if ((position1Match && !position2Match) || (!position1Match && position2Match)) {
     validCount++
   }
