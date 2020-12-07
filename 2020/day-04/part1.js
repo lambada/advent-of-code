@@ -15,17 +15,6 @@ passports = passports.map(passport => {
   })
 })
 
-const yearChecker = (value, min, max) => {
-  if (!/^\d\d\d\d$/.test(value)) {
-    return false
-  }
-  const year = Number.parseInt(value, 10)
-  if (year < min || year > max) {
-    return false
-  }
-  return true
-}
-
 const requiredFields = ['byr', 'iyr', 'eyr', 'hgt', 'hcl', 'ecl', 'pid']
 const validPassports = passports.filter(passport => {
   for (const requiredField of requiredFields) {
