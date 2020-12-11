@@ -20,7 +20,7 @@ while (!visitedInstructions.has(pc)) {
       break
     case 'acc':
       acc = acc + instruction.arg
-      pc = pc + 1;
+      pc = pc + 1
       break
     case 'jmp':
       pc = pc + instruction.arg

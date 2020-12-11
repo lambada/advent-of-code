@@ -12,7 +12,7 @@ const rules = input.split('\n').map(ruleAsText => {
         return undefined
       }
       const containeeParts = containee.split(' ')
-      const qty = Number.parseInt(containeeParts.shift(),10)
+      const qty = Number.parseInt(containeeParts.shift(), 10)
       const name = containeeParts.join(' ')
       return {
         name,
@@ -39,7 +39,6 @@ do {
       const matchingRule = rules.filter(rule => rule.name === containingRule.name)[0]
       if (matchingRule.containsQty === undefined) {
         ruleHasUnCalculatableContainingQty = true
-        return
       } else {
         containsQty = containsQty + containingRule.qty + (containingRule.qty * matchingRule.containsQty)
       }

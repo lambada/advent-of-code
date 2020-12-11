@@ -49,7 +49,7 @@ const run = program => {
 }
 
 let solution
-for(let i = 0; i < program.length; i++) {
+for (let i = 0; i < program.length; i++) {
   if (program[i].operation === 'jmp') {
     const modifiedProgram = JSON.parse(JSON.stringify(program))
     modifiedProgram[i].operation = 'nop'
