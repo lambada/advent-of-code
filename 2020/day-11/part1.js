@@ -16,7 +16,6 @@ const getSeat = (row, column) => {
 }
 
 let changesMade = false
-let iterations = 0
 
 do {
   changesMade = false
@@ -59,7 +58,6 @@ do {
     }
   }
   seats = nextIteration
-  iterations++
 } while (changesMade)
 
 let occupiedSeats = 0
