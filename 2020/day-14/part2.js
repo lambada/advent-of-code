@@ -38,7 +38,6 @@ inputs.forEach((instruction, line) => {
   })
 })
 
-
 const total = Object.values(memory).reduce((total, val) => {
   const newTotal = total + val
   return newTotal
