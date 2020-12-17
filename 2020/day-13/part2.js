@@ -10,10 +10,18 @@ const buses = lines[1].split(',')
     return id
   })
   .map(id => Number.parseInt(id, 10))
+  // (t + index) % id === 0
+  // ((t % id) + (index % id)) % id === 0
+  // { id: 59, index: 4 }
+  // ((t % 59) + (4 % 59)) % 59 === 0
+  // ((t % 59) + 4) % 59 === 0
+  // t % 59 must therefore equal 59 - 4 = 55; as 55 is hte only number that is both < 59 and add 4 === 59
+  // t % 59 === 55
   .map((id, index) => {
     return {
       id,
-      index
+      index,
+      tModIdMustEqual: (id - (index % id)) % id // % id at end because if index is 0 it will === id
     }
   })
   .filter(bus => bus.id !== -1)
@@ -21,8 +29,6 @@ const buses = lines[1].split(',')
   .sort((busA, busB) => {
     return busB.id - busA.id
   })
-
-console.log(buses)
 
 let t = 0
 let matchFound = false
@@ -32,7 +38,8 @@ do {
   matchFound = true
   if (timeToStartCheckingFrom % 1000000 === 0) console.log('checking ' + timeToStartCheckingFrom)
   for (let i = 1; i < buses.length; i++) {
-    if ((timeToStartCheckingFrom + buses[i].index) % buses[i].id !== 0) {
+    //   // (t + index) % id === 0
+    if (timeToStartCheckingFrom % buses[i].id !== buses[i].tModIdMustEqual) {
       matchFound = false
       break
     }
@@ -41,14 +48,3 @@ do {
 console.log(t - buses[0].index)
 
 console.log(buses)
-
-// (t + index) % id === 0
-// ((t % id) + (index % id)) % id === 0
-
-// [
-// { id: 7, index: 0 },
-// { id: 13, index: 1 },
-// { id: 59, index: 4 },
-// { id: 31, index: 6 },
-// { id: 19, index: 7 }
-// ]
